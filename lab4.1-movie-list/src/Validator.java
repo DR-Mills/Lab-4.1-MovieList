@@ -30,6 +30,7 @@ public class Validator {
 
 	}
 	
+	// overloaded method
 	// validates input as "y" (or "yes") or "n" (or "no") and returns boolean y = true, n = false.
 	public static boolean userContinueYorN(String promptMsg, Scanner scnr) {
 		String userInput = null;
@@ -59,7 +60,8 @@ public class Validator {
 		return userContinues;
 	}
 	
-	// 
+	// overloaded method
+	// validates input as "y" (or "yes") or "n" (or "no") and returns boolean y = true, n = false.
 	public static boolean userContinueYorN(String promptMsg, String goodbyeMsg, Scanner scnr) {
 		String userInput = null;
 		boolean invalidInput = true;
@@ -68,7 +70,7 @@ public class Validator {
 		
 		do {
 			try {
-				userInput = scnr.nextLine();
+				userInput = scnr.next();
 				if (userInput.equalsIgnoreCase("y") || userInput.equalsIgnoreCase("yes")) {
 					invalidInput = false;
 					userContinues = true;
@@ -76,6 +78,8 @@ public class Validator {
 					System.out.println(goodbyeMsg);
 					invalidInput = false;
 					userContinues = false;
+				} else {
+					throw new InputMismatchException();
 				}
 			} catch (InputMismatchException e) {
 				System.out.print("Invalid input. Please enter \"y\" or \"n\": ");

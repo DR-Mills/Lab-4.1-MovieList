@@ -28,19 +28,26 @@ public class movieListApp {
 			printMenu();
 			
 			int userChoice = Validator.validatedInt(menuPrompt, scnr, 1, genreMenu.size());
+			
 			ArrayList<Movie> genreFilteredList = genreFilteredMovieList(userChoice);
+			
 			int genreFilteredListSize = genreFilteredList.size();
+			
 			System.out.println("\nThere are " + genreFilteredListSize + " " + genreMenu.get(userChoice)
 					+ " movies in our database. They are:");
-			printGenreFilteredList(genreFilteredList);
+			
+			printMovieTitles(genreFilteredList);
+			
 			System.out.println();
+			
 			userContinues = Validator.userContinueYorN("Continue? (y/n): ", "Thanks! Goodbye.", scnr);
+			
 		} while (userContinues);
 
 	}
 
-	private static void printGenreFilteredList(ArrayList<Movie> genreFilteredList) {
-		for (Movie movie : genreFilteredList) {
+	private static void printMovieTitles(ArrayList<Movie> list) {
+		for (Movie movie : list) {
 			System.out.println(movie.getTitle());
 		}
 	}
